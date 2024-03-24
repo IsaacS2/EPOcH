@@ -1,0 +1,289 @@
+:: StoryTitle
+EPOcH
+
+
+:: StoryData
+{
+  "ifid": "0566F85A-F504-4AD6-8CD0-1A6985AB8D96",
+  "format": "Harlowe",
+  "format-version": "3.3.7",
+  "start": "Start",
+  "zoom": 0.6
+}
+
+
+:: Certainity {"position":"500,650","size":"100,100"}
+(bg:black)[As you begin entering the void, the gusts subside.
+
+Your path continues.
+
+[[Restart|Start]]]
+
+(hide:?sidebar)
+
+
+:: Check Confidence {"position":"800,500","size":"100,100"}
+(if: $Confidence > 2)[(goto: "Confident Ending")]
+(else:))[(goto: "Check Length")]
+
+(hide:?sidebar)
+
+
+:: Check Length {"position":"650,500","size":"100,100"}
+(if: $Reflect is true)[(goto: "Length Ending")]
+(else:))[(goto: "Regular Ending")]
+
+(hide:?sidebar)
+
+
+:: Confident Ending {"position":"650,50","size":"100,100"}
+(bg:black)[As you step forward, the void begins (text-rotate-x:48)+(text-rotate-y:346)+(text-rotate-z:13)[shaking] violently. However, it doesn't hurt you. ]
+
+(bg:black)[It continues (text-rotate-x:33)+(text-rotate-y:355)+(text-rotate-z:7)[shaking], despite the futility.]
+
+(bg:black)[Maybe it recognizes your newfound confidence. (if: $Reflect is true)[It might also acknowledge your self-reflection.]]
+
+(bg:black)[[[//**The shaking continues**//|New Void]]]
+
+(hide:?sidebar)
+
+
+:: Edge {"position":"650,200","size":"100,100"}
+(bg:black)[(align:"=><=")[You wake up to see the (text-colour:black)+(bg:grey)[omnious], silent void staring at you.]
+
+(bg:black)[It felt like only a few days ago that it was barely a speck far in your future.]
+
+(bg:black)[Now, it's here.]
+
+(bg:black)[It stares silently.]]
+
+(hide:?sidebar)
+
+[[Turn around]]
+[[Go into the void]]
+[[Stare back]]
+[[Look around for others]]
+
+
+
+:: First Convo {"position":"650,800","size":"100,100"}
+(bg:black)[You approach the stranger, and ask them about their jetpack.]
+
+(bg:black)[(text-colour:navy)["Oh, this thing. It's pretty helpful, I guess. It'll still be a pain going through that void, but I'm happy I spent time on this."]
+
+(text-colour:navy)["...oh, but you don't need this to go--I bet you have something else that can help you. Maybe a jetpack, maybe something else, but don't sell yourself short either way. You got this!"]]
+
+(bg:black)[After a handshake, the stranger jets towards the void with a fully-fueled jetpack.]
+
+[[//Where was I...//|Edge]]
+
+(hide:?sidebar)
+(set: $Confidence to it + 1)
+
+
+:: First Meeting {"position":"650,650","size":"100,100"}
+(bg:black)[You see the smoke emanating from back of the mysterious figure.
+
+They land with a loud //thud// and begin filling their jetpack with gas.
+
+[[Talk with them|First Convo]]
+[[Avoid them|Edge]]]
+
+<img src="https://github.com/IsaacS2/EPOcH/blob/main/Jetpack.jpg?raw=true"
+  alt="A Sketch of a Large Building" width="500"
+/>
+(hide:?sidebar)
+
+
+:: Go into the void {"position":"800,350","size":"100,100"}
+(hide:?sidebar)
+
+(bg:black)[(align:"=><=")[Everything around you shakes.
+
+Or at least, it feels like it.
+
+Maybe it's the rattling of your legs as you step closer.]
+]
+[[Keep going|Check Confidence]]
+[[Turn back|Edge]]
+
+
+:: Length Ending {"position":"500,500","size":"100,100"}
+(bg:black)[With self-reflection behind you like a superhero's cape, you stomp towards the [[void|Certainity]].]
+
+(hide:?sidebar)
+
+
+:: Look around 2 {"position":"950,50","size":"100,100"}
+(if: $Confidence is 1)[[[There's someone else walking towards the void.|Second Meeting]]]
+(else:)[(goto: "Look around 3")]
+
+(hide:?sidebar)
+
+
+:: Look around 3 {"position":"950,200","size":"100,100"}
+(if: $Confidence is 2)[[[Someone's sitting on the ground.|Third Meeting]]]
+(else:)[[[No one's around right now.|Edge]]]
+
+(hide:?sidebar)
+
+
+:: Look around for others {"position":"650,350","size":"100,100"}
+(if: $Confidence <= 0)[[[There's someone...flying towards the void!?!|First Meeting]]]
+(else:)[(goto: "Look around 2")]
+
+
+(hide:?sidebar)
+
+
+:: New Void {"position":"800,200","size":"100,100"}
+(bg:black)[(align:"=><=")[Bounds of colors eminate from the void, transforming it into an infinite rainbow.]
+
+(bg:black)[The shaking stops, and you step into the void.]]
+
+<img src="https://github.com/IsaacS2/EPOcH/blob/main/ColorVoid.jpg?raw=true"
+  alt="A Sketch of a Large Building" width="500"
+/>
+
+(bg:black)[[[Restart|Start]]]
+
+(hide:?sidebar)
+
+
+
+:: Reflect {"position":"350,500","size":"100,100"}
+(align:"=><=")[You look behind, gazing at everything you went through.]
+
+(align:"=><=")[(bg:(gradient: 0, 0,#000000,0.5,#19e619,1,#000000))[The splendid]
+
+(align:"=><=")[(bg:(gradient: 0, 0,#000000,0.5,#e619e5,1,#000000))[The tragic]]]
+
+(bg:black)[You hear a shrill from the void, with a gust of wind accompanying it and attempting to pull your past into it, prying it away from you.
+
+But it can't. It's [[yours|Edge]].]
+
+(set: $Reflect to true)
+(hide:?sidebar)
+
+
+:: Regular Ending {"position":"800,50","size":"100,100"}
+(bg:black)[With indefinite shaking surrounding you, but with seemingly no alternatives, you walk into the void.]
+
+(bg:black)[[[Restart|Start]]]
+
+
+(hide:?sidebar)
+
+
+
+:: Second Convo {"position":"800,800","size":"100,100"}
+(bg:black)[You ask the older person why they haven't entered a void before.]
+
+(bg:black)[(text-colour:cyan)["Huh? I explored plenty of voids before. There are plenty of voids you'll have to go through"]
+
+(text-colour:cyan)["In any case, it's never too late to take the trek through the void."
+]]
+
+(bg:black)[You thank the elderly stranger as they calmly walk into the void.]
+
+[[//Where was I...//|Edge]]
+
+(hide:?sidebar)
+(set: $Confidence to it + 1)
+
+
+:: Second Meeting {"position":"800,650","size":"100,100"}
+(bg:black)[You spot a much older individual walking towards the void.
+
+[[Talk with them|Second Convo]]
+[[Avoid them|Edge]]
+]
+<img src="https://github.com/IsaacS2/EPOcH/blob/main/Watch.jpg?raw=true"
+  alt="A Sketch of a Large Building" width="500"
+/>
+(hide:?sidebar)
+
+
+:: Stare back {"position":"500,350","size":"100,100"}
+(set: $Length to it + 1)
+(hide:?sidebar)
+
+(bg:black)[The void is steadfast, with no sign of disappearing.
+
+(if: $Length >= 5)[With all this time outside the void, there's some time to [[reflect|Reflect]].]
+
+[[Keep staring|Stare back]]
+[[Do something else|Edge]]]
+
+
+:: Start {"position":"500,200","size":"100,100"}
+(bg:black)[(align:"=><=")[[[EPOcH|Edge]]]]
+
+(hide:?sidebar)
+(set: $Confidence to 0)
+(set: $Length to 0)
+(set: $Reflect to false)
+
+
+:: Third Convo {"position":"350,800","size":"100,100"}
+(text-colour:orange)["...hey"]
+
+(bg:black)[You talk with them for a while, about plenty of things.
+
+You listen, and they listen in return.
+
+The crying subsides.]
+
+[[...|Third Convo Ending]]
+
+
+(hide:?sidebar)
+
+
+:: Third Convo Ending {"position":"350,650","size":"100,100"}
+(bg:black)[Eventually you both get up from the floor.]
+
+(text-colour:orange)["Thanks"]
+
+(bg:black)[They walk into the void.]
+
+[[//Where was I...//|Edge]]
+
+(hide:?sidebar)
+(set: $Confidence to it + 1)
+
+
+:: Third Meeting {"position":"500,800","size":"100,100"}
+(bg:black)[They're sobbing into their crossed arms, head down and turned directly away from the void.]
+
+(bg:black)[[[Talk with them|Third Convo]]
+[[Avoid them|Edge]]]
+
+<img src="https://github.com/IsaacS2/EPOcH/blob/main/Crying.jpg?raw=true"
+  alt="A Sketch of a Large Building" width="500"
+/>
+(hide:?sidebar)
+
+
+
+
+:: Turn around {"position":"500,50","size":"100,100"}
+(bg:black)[There's plenty behind you, but all you can do is look.]
+
+(bg:black)[(if: $Length >= 5)[With all this time outside the void, there's some time to [[reflect|Reflect]].]]
+
+(bg:black)[[[Turn again|Edge]]]
+
+(hide:?sidebar)
+(set: $Length to it + 1)
+
+
+:: StoryStylesheet [stylesheet]
+tw-story{
+  	background-color:#404040;
+  
+	background-image: url("https://raw.githubusercontent.com/IsaacS2/EPOcH/main/Void.jpg");
+	background-size: cover;
+  
+  
+}
